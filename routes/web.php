@@ -43,6 +43,6 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [TaskController::class, 'index'])->name('dashboard');
-    Route::put('/tasks/{id}', [TaskController::class, 'update'])->name('tasks.update');
-    Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
+    Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store'); //doit être avant ...{id}
+    Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
 });
