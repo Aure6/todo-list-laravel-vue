@@ -44,5 +44,6 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [TaskController::class, 'index'])->name('dashboard');
     Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store'); //doit être avant ...{id}
-    Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
+    Route::put('/tasks/{task}/update', [TaskController::class, 'update'])->name('tasks.update');
+    Route::delete('/tasks/{task}/delete', [TaskController::class, 'destroy'])->name('tasks.delete');
 });

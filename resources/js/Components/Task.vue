@@ -3,6 +3,10 @@
     <div class="flex flex-row px-4 py-2 space-x-4 bg-gray-100 rounded">
         <input type="checkbox" :true-value="1" v-model="taskForm.is_done" @change="save" />
 
+        <button type="button" @click="deleteTask">
+            X
+        </button>
+
         <p>{{ task.title }}</p>
     </div>
 </template>
@@ -29,6 +33,11 @@ const taskForm = useForm({
 const save = () => {
     console.log('Task ID: ' + props.task.id);
     console.log(taskForm.is_done);
-    taskForm.put(`/tasks/${props.task.id}`);
+    taskForm.put(`/tasks/${props.task.id}/update`);
 };
+
+const deleteTask = () => {
+    console.log('Task ID: ' + props.task.id);
+    taskForm.delete(`/tasks/${props.task.id}/delete`);
+}
 </script>
