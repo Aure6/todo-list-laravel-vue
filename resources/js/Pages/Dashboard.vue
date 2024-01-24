@@ -35,6 +35,13 @@ defineProps([
                         <h1 class="text-3xl font-light">My Todo List</h1>
 
                         <div class="flex flex-col mt-4 space-y-4">
+                            <!-- @if (session('success'))
+                            <div class="p-6 overflow-hidden bg-white shadow-xl sm:rounded-lg">
+                                <div class="p-4 mb-4 text-green-700 bg-green-100 border-l-4 border-green-500" role="alert">
+                                    <p class="font-bold">Success</p>
+                                    <p>{{ session('success') }}</p>
+                                </div>
+                            </div> -->
                             <AddTaskForm />
                             <Task v-for="task in tasks" :key="task.id" :task="task" />
                         </div>

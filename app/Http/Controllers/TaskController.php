@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTaskRequest;
 use App\Models\Task;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -38,14 +40,16 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTaskRequest $request): RedirectResponse
     {
         Task::create([
             'title' => $request->input('title'),
             'is_done' => false,
         ]);
 
-        return redirect()->to('/dashboard');
+        // session()->flash('success', 'Task created successfully.');
+
+        return back();
     }
 
     /**

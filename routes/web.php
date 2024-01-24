@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TaskController;
 use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -43,7 +44,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [TaskController::class, 'index'])->name('dashboard');
-    Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store'); //doit être avant ...{id}
+    Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store')->middleware([HandlePrecognitiveRequests::class]); //doit être avant ...{id}
     Route::put('/tasks/{task}/update', [TaskController::class, 'update'])->name('tasks.update');
     Route::delete('/tasks/{task}/delete', [TaskController::class, 'destroy'])->name('tasks.delete');
 });
